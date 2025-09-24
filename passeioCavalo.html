@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Passeio do Cavalo</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="icon" href="cavalo.jpg" />
+  <script defer src="passeioCavalo.js"></script>
+</head>
+<body>
+  <main>
+    <h1>PASSEIO DO CAVALO</h1>
+
+    <p><strong>Objetivo:</strong> o cavalo deve percorrer todo o tabuleiro sem passar mais de uma vez pela mesma casa, respeitando os movimentos em L.</p>
+    
+    <br>
+    <label for="tam_tabuleiro">Escolha as dimensões do tabuleiro:</label>
+    <select id="tam_tabuleiro" aria-label="Tamanho do tabuleiro">
+      <option value="5">5x5</option>
+      <option value="6">6x6</option>
+      <option value="7">7x7</option>
+      <option value="8" selected>8x8</option>
+      <option value="9">9x9</option>
+      <option value="10">10x10</option>
+    </select>
+
+    <div id="tabuleiro" aria-label="Tabuleiro do passeio do cavalo"></div>
+
+    <div class="controls">
+      <button id="btnVoltar" type="button" disabled>Voltar</button>
+      <button id="btnLimpar" type="button" disabled>Limpar</button>
+      <button id="btnResolver" type="button">Resolver</button>
+    </div>
+
+    <div id="mensagem" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>

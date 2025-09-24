@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Problema de Monty Hall</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="icon" href="porta.jpg" />
+  <script defer src="bode.js"></script>
+</head>
+<body>
+  <main>
+    <h1>PROBLEMA DE MONTY HALL</h1>
+
+    <section class="intro">
+      <p>Diante de você, três portas. Atrás de uma delas, um carro. Atrás das outras, bodes. Faça sua escolha. apresentador abre uma das portas que você não escolheu, revelando um bode. Agora surge a dúvida: manter sua porta ou trocar?</p>
+    </section>
+
+    <section class="game">
+      <div class="doors">
+        <img id="p1" alt="Porta 1">
+        <img id="p2" alt="Porta 2">
+        <img id="p3" alt="Porta 3">
+      </div>
+      <br>
+      <div id="msg" class="msg"></div>
+      <br>
+      <button id="btnRestart">Jogar de novo</button>
+    </section>
+  
+    <br>
+
+    <section class="stats">
+      <h2>Estatísticas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Trocou?</th>
+            <th>Ganhos</th>
+            <th>Perdas</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sim</td>
+            <td id="TrocGanhou">0</td>
+            <td id="TrocPerdeu">0</td>
+            <td id="TrocPercent">0</td>
+          </tr>
+          <tr>
+            <td>Não</td>
+            <td id="NTrocGanhou">0</td>
+            <td id="NTrocPerdeu">0</td>
+            <td id="NTrocPercent">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="btnResetStats">Zerar Estatísticas</button>
+    </section>
+
+  </main>
+</body>
+</html>

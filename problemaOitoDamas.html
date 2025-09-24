@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Problema das Damas</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="icon" href="dama.jpg" />
+  <script defer src="problemaOitoDamas.js"></script>
+</head>
+<body>
+  <main>
+    <h1>PROBLEMA DAS DAMAS</h1>
+    <p><strong>Objetivo:</strong> posicionar as peças no tabuleiro de forma que duas não ocupem a mesma linha, coluna ou diagonal.</p>
+    <br>
+    <label for="qtd_damas">Escolha a quantidade de damas:</label>
+    <select id="qtd_damas">
+      <option value="4">Quatro</option>
+      <option value="5">Cinco</option>
+      <option value="6">Seis</option>
+      <option value="7">Sete</option>
+      <option value="8" selected>Oito</option>
+      <option value="9">Nove</option>
+      <option value="10">Dez</option>
+    </select>
+
+    <div id="tabuleiro" aria-label="Tabuleiro"></div>
+
+    <div class="controls">
+      <button id="btnLimpar" type="button">Limpar</button>
+      <button id="btnResolver" type="button">Resolver</button>
+    </div>
+    <div id="mensagem" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>

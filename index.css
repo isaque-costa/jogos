@@ -1,0 +1,260 @@
+/* ======================= */
+/* Reset / Base            */
+/* ======================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #fdfdfd;
+  color: #111;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+/* ======================= */
+/* Header fixo / Navegação */
+/* ======================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #f0d9b5;
+  border-bottom: 2px solid #333;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.8rem;
+  z-index: 1000;
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* ======================= */
+/* Main / Conteúdo         */
+/* ======================= */
+main {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ======================= */
+/* Iframe Responsivo       */
+/* ======================= */
+iframe {
+  width: 800px;
+  max-width: 95%;
+  height: 650px;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+/* ======================= */
+/* Títulos                */
+/* ======================= */
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* ======================= */
+/* Seções / Introdução      */
+/* ======================= */
+.intro {
+  margin-bottom: 1rem;
+}
+
+/* ======================= */
+/* Estatísticas / Tabelas   */
+/* ======================= */
+.stats {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stats table {
+  width: 300px;
+  margin: 0 auto 0.5rem auto;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.stats th,
+.stats td {
+  border: 1px solid #333;
+  padding: 0.3rem;
+  text-align: center;
+}
+
+.stats th {
+  background: #f0d9b5;
+}
+
+.stats td:first-child {
+  font-weight: bold;
+}
+
+/* ======================= */
+/* Tabuleiro clássico (.square) */
+/* ======================= */
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  border: 2px solid #222;
+}
+
+td {
+  padding: 0;
+}
+
+tr:nth-child(odd) td:nth-child(odd),
+tr:nth-child(even) td:nth-child(even) {
+  background: #f0d9b5;
+}
+
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
+  background: #b58863;
+}
+
+.square {
+  display: block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  user-select: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.square.current { background-image: url('cavalo.jpg'); }
+.square.visited { background-image: url('visitada.jpg'); }
+.square.queen { background-image: url('dama.bmp'); }
+.square.threat { background-image: url('damaAmeacada.bmp'); }
+
+/* ======================= */
+/* Grid estilo moderno (.board / .cell) */
+/* ======================= */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #888;
+  background-color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cell.active {
+  background-color: red;
+}
+
+/* ======================= */
+/* Jogo das portas (.doors) */
+/* ======================= */
+.game {
+  text-align: center;
+}
+
+.doors {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.doors img {
+  width: 150px;
+  height: 220px;
+  cursor: pointer;
+  border: 2px solid #333;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+#msg {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: red;
+  margin-top: 0.5rem;
+}
+
+/* ======================= */
+/* Controles / Botões       */
+/* ======================= */
+.controls,
+.buttons {
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ======================= */
+/* Mensagens / Informações  */
+/* ======================= */
+#moves,
+#recorde {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+#mensagem {
+  color: #b00;
+  margin-top: 0
