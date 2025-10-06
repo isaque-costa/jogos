@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>Apagar as luzes</title>
-  <link rel="stylesheet" href="estilo.css">
-  <script src="lightsout.js" defer></script>
+  <link rel="stylesheet" href="estilo.css" />
+  <script defer src="lightsout.js"></script>
 </head>
 <body onload="main()">
-
-  <h1>APAGAR AS LUZES (LIGHTS OUT)</h1>
-  <p><b>Objetivo:</b> Clicar em uma lâmpada altera não somente o seu estado, mas também o estado das lâmpadas vizinhas na vertical e na horizontal. O objetivo é apagar todas as luzes vermelhas.</p>
+  <main>
+     <h1>APAGAR AS LUZES (LIGHTS OUT)</h1>
+     <p><b>Objetivo:</b> Clicar em uma lâmpada altera não somente o seu estado, mas também o estado das lâmpadas vizinhas na vertical e na horizontal. O objetivo é apagar todas as luzes vermelhas.</p>
      
+     <div id="board" class="board"></div>
 
-  <div id="board" class="board"></div>
+     <p id="moves">Movimentos: 0</p>
+     <p id="recorde">Recorde: --</p>
 
-  <p id="moves">Movimentos: 0</p>
-  <p id="recorde">Recorde: --</p>
-
-  <div class="buttons">
-    <button onclick="document.location.reload(true);">Reiniciar</button>
-    <button onclick="zerarRecorde()">Zerar Recorde</button>
-  </div>
-
+     <div class="buttons">
+       <button onclick="document.location.reload(true);">Reiniciar</button>
+       <button onclick="zerarRecorde()">Zerar Recorde</button>
+     </div>
+  </main>
 </body>
 </html>
