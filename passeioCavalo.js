@@ -148,27 +148,36 @@
     return (dr === 1 && dc === 2) || (dr === 2 && dc === 1);
   }
 
-  function atualizaVisual() {
-    // limpa classes de todas as células
-    for (let r = 0; r < tam; r++) {
-      for (let c = 0; c < tam; c++) {
-        const cell = document.getElementById(`a${r}${c}`);
-        if (!cell) continue;
-        cell.classList.remove('current', 'visited');
-      }
-    }
-    // marca visitadas (exceto a atual)
-    for (let i = 0; i < path.length - 1; i++) {
-      const id = path[i];
-      const el = document.getElementById(id);
-      if (el) el.classList.add('visited');
-    }
-    // marca atual (se houver)
-    if (path.length > 0) {
-      const atual = document.getElementById(path[path.length - 1]);
-      if (atual) atual.classList.add('current');
+function atualizaVisual() {
+  // limpa classes e números de todas as células
+  for (let r = 0; r < tam; r++) {
+    for (let c = 0; c < tam; c++) {
+      const cell = document.getElementById(`a${r}${c}`);
+      if (!cell) continue;
+      cell.classList.remove('current', 'visited');
+      cell.textContent = ''; // limpa numeração anterior
     }
   }
+
+  // marca visitadas (exceto a atual)
+  for (let i = 0; i < path.length - 1; i++) {
+    const id = path[i];
+    const el = document.getElementById(id);
+    if (el) {
+//      el.classList.add('visited');
+      el.textContent = i + 1; // mostra número da jogada
+    }
+  }
+
+  // marca atual (se houver)
+  if (path.length > 0) {
+    const atual = document.getElementById(path[path.length - 1]);
+    if (atual) {
+      atual.classList.add('current');
+      atual.textContent = path.length; // número da jogada atual
+    }
+  }
+}
 
   // ---------- SOLVER (backtracking + heurística de Warnsdorff) ----------
   function resolve() {
@@ -176,8 +185,10 @@
 //    imprime('Procurando solução...');
     btnResolver.disabled = true;
 
-    // tentativa: começamos em (0,0) por padrão — você pode mudar
-    const startR = 0, startC = 0;
+    // escolher posição inicial aleatória
+    const startR = Math.floor(Math.random() * tam);
+    const startC = Math.floor(Math.random() * tam);
+
 
     // visited local p/ solver
     const vis = Array.from({ length: tam }, () => Array(tam).fill(false));
@@ -237,7 +248,7 @@
       atualizaVisual();
 //      imprime('Solução encontrada: ' + pathSolver.join(' '));
     } else {
-      imprime('O problema é impossível (nenhuma solução encontrada a partir de 0,0).');
+      imprime(`O problema é impossível (nenhuma solução encontrada a partir de ${startR},${startC}).`);
     }
 
     btnResolver.disabled = false;
