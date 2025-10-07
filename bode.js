@@ -10,11 +10,15 @@
   const msg = document.getElementById("msg");
 
   document.addEventListener("DOMContentLoaded", () => {
+    carregarEstatisticas();
+
     document.getElementById("btnRestart").addEventListener("click", main);
     document.getElementById("btnResetStats").addEventListener("click", resetEstatisticas);
+
     portas.slice(1).forEach((id, i) => {
       document.getElementById(id).addEventListener("click", () => escolheu(i + 1));
     });
+
     main();
   });
 
@@ -47,6 +51,7 @@
       Z = premio;
       Y = 6 - X - Z;
     }
+
     revela(Y, "bode");
     mensagem("oferta");
   }
@@ -67,14 +72,18 @@
       mensagem("perdeu");
       porta === X ? NTrocouPerdeu++ : TrocouPerdeu++;
     }
+
+    salvarEstatisticas();
     atualizaEstatisticas();
   }
 
   function atualizaEstatisticas() {
     const TrocouPercent = TrocouGanhou + TrocouPerdeu > 0
-      ? (TrocouGanhou / (TrocouGanhou + TrocouPerdeu) * 100) : 0;
+      ? (TrocouGanhou / (TrocouGanhou + TrocouPerdeu) * 100)
+      : 0;
     const NTrocouPercent = NTrocouGanhou + NTrocouPerdeu > 0
-      ? (NTrocouGanhou / (NTrocouGanhou + NTrocouPerdeu) * 100) : 0;
+      ? (NTrocouGanhou / (NTrocouGanhou + NTrocouPerdeu) * 100)
+      : 0;
 
     document.getElementById("NTrocGanhou").textContent = NTrocouGanhou;
     document.getElementById("TrocGanhou").textContent = TrocouGanhou;
@@ -84,28 +93,54 @@
     document.getElementById("NTrocPercent").textContent = NTrocouPercent.toFixed(2);
   }
 
+  function salvarEstatisticas() {
+    const dados = {
+      NTrocouGanhou,
+      TrocouGanhou,
+      NTrocouPerdeu,
+      TrocouPerdeu
+    };
+    localStorage.setItem("montyHallStats", JSON.stringify(dados));
+  }
+
+  function carregarEstatisticas() {
+    const dados = localStorage.getItem("montyHallStats");
+    if (dados) {
+      try {
+        const obj = JSON.parse(dados);
+        NTrocouGanhou = obj.NTrocouGanhou || 0;
+        TrocouGanhou = obj.TrocouGanhou || 0;
+        NTrocouPerdeu = obj.NTrocouPerdeu || 0;
+        TrocouPerdeu = obj.TrocouPerdeu || 0;
+      } catch (e) {
+        console.warn("Erro ao carregar estatísticas:", e);
+      }
+    }
+    atualizaEstatisticas();
+  }
+
   function resetEstatisticas() {
     NTrocouGanhou = TrocouGanhou = NTrocouPerdeu = TrocouPerdeu = 0;
+    salvarEstatisticas();
     atualizaEstatisticas();
   }
 
   function mensagem(tipo) {
     switch (tipo) {
-      case "apresenta": 
-        msg.textContent = "Escolha uma porta."; 
+      case "apresenta":
+        msg.textContent = "Escolha uma porta.";
         break;
-      case "oferta": 
-        msg.textContent = "Deseja trocar de porta?"; 
+      case "oferta":
+        msg.textContent = "Deseja trocar de porta?";
         break;
-      case "ganhou": 
-        msg.textContent = "Parabéns! Você ganhou o carro!"; 
+      case "ganhou":
+        msg.textContent = "Parabéns! Você ganhou o carro!";
         break;
-      case "perdeu": 
-        msg.textContent = "Que pena! Você perdeu."; 
+      case "perdeu":
+        msg.textContent = "Que pena! Você perdeu.";
         break;
+    }
   }
-}
-
 
   function revela(num, tipo) {
     const el = document.getElementById("p" + num);
