@@ -78,10 +78,9 @@ function joga(casa) {
         localStorage.setItem("recordeLightsOut", recorde);
         atualizarRecorde();
         alert(`🎉 Novo recorde: ${recorde} movimentos!`);
-     
-        document.location.reload(true); // recarrega página
       }
     }, 100);
+    document.location.reload(true); // recarrega página
   }
 }
 
