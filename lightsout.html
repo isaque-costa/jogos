@@ -2,24 +2,36 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
-  <title>Apagar as luzes</title>
+  <title>Apagar as Luzes</title>
   <link rel="stylesheet" href="estilo.css" />
   <script defer src="lightsout.js"></script>
 </head>
 <body onload="main()">
   <main>
-     <h1>APAGAR AS LUZES (LIGHTS OUT)</h1>
-          <p><strong>Objetivo:</strong> Apagar todas as luzes vermelhas (clicar em uma lâmpada altera o seu estado e o das vizinhas na vertical e na horizontal)</p>
-     
-     <div id="board" class="board"></div>
+    <h1>APAGAR AS LUZES (LIGHTS OUT)</h1>
+    <p><strong>Objetivo:</strong> Apagar todas as luzes vermelhas.<br>
+    (Clicar em uma lâmpada altera o seu estado e o das vizinhas nas direções horizontal e vertical.)</p>
 
-     <p id="moves">Movimentos: 0</p>
-     <p id="recorde">Recorde: --</p>
+    <div class="config">
+      <label for="gridSize"><strong>Tamanho do tabuleiro:</strong></label>
+      <select id="gridSize" onchange="main()">
+        <option value="3">3×3</option>
+        <option value="5">5×5</option>
+        <option value="7">7×7</option>
+      </select>
+    </div>
 
-     <div class="buttons">
-       <button onclick="document.location.reload(true);">Reiniciar</button>
-       <button onclick="zerarRecorde()">Zerar Recorde</button>
-     </div>
+    <div id="board" class="board"></div>
+
+    <p id="moves">Movimentos: 0</p>
+    <p id="recorde">Recorde: --</p>
+
+    <div class="buttons">
+      <button onclick="main()">Reiniciar</button>
+      <button onclick="zerarRecorde()">Zerar Recorde</button>
+      <button onclick="mostrarSolucao()">Resolver</button>
+    </div>
+
   </main>
 </body>
 </html>
