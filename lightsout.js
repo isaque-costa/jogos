@@ -79,8 +79,8 @@ function joga(casa) {
         atualizarRecorde();
         alert(`🎉 Novo recorde: ${recorde} movimentos!`);
       }
+      main();
     }, 100);
-    document.location.reload(true); // recarrega página
   }
 }
 
