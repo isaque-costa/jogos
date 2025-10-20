@@ -58,23 +58,48 @@ tr:nth-child(even) td:nth-child(odd) { background: #b58863; }
 .square.queen { background-image: url('dama.jpg'); }
 .square.threat { background-image: url('damaAmeacada.jpg'); }
 
-/* Grid moderno */
+/* Grid do Lights Out */
 .board {
   display: grid;
-  grid: repeat(3, 60px) / repeat(3, 60px);
-  gap: 5px;
   justify-content: center;
-  margin: 20px auto;
+  align-content: center;
+  gap: 6px; /* espaçamento idêntico entre linhas e colunas */
+  margin: 30px auto;
 }
+
 .cell {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border: 1px solid #888;
-  background: white;
+  background: #fff;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.1s;
 }
-.cell.active { background: red; }
+
+.cell:hover {
+  transform: scale(1.05);
+}
+
+.cell.active {
+  background: red;
+}
+
+.cell.hint {
+  position: relative;
+}
+
+.cell.hint::after {
+  content: "X";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none;
+}
+
 
 /* Jogo das portas */
 .doors {
