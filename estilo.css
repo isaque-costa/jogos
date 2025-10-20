@@ -76,10 +76,6 @@ tr:nth-child(even) td:nth-child(odd) { background: #b58863; }
   transition: background 0.3s, transform 0.1s;
 }
 
-.cell:hover {
-  transform: scale(1.05);
-}
-
 .cell.active {
   background: red;
 }
@@ -137,3 +133,4 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 /* Mensagens / Info */
 #moves, #recorde { font-size: 16px; font-weight: bold; margin: 5px 0; }
 #mensagem { color: #b00; margin-top: 0.5rem; font-weight: 600; }
+
