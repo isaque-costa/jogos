@@ -36,7 +36,9 @@ function main() {
   }
 
   // Gera tabuleiro resolvível
-  gerarTabuleiroResolvivel();
+  do {
+	acesas = gerarTabuleiroResolvivel();
+  } while (acesas == 0);	
 
   atualizarTela();
 }
@@ -47,12 +49,19 @@ function gerarTabuleiroResolvivel() {
   tabuleiro = Array(total).fill(0);
 
   // Faz algumas jogadas aleatórias para embaralhar
-  const qtdJogadas = Math.floor(total / 2) + 1;
+  const qtdJogadas = Math.floor(Math.random() * (total))+1;
 
   for (let k = 0; k < qtdJogadas; k++) {
     const i = Math.floor(Math.random() * total);
     vizinhos(i).forEach(v => tabuleiro[v] = 1 - tabuleiro[v]);
   }
+
+  // Conta número de lâmpadas acesas
+  let acesas = 0;
+  for (let k = 0; k < qtdJogadas; k++) {
+    acesas += tabuleiro[k]; 	  
+  } 
+  return acesas;
 }
 
 // ===== Calcula vizinhos de uma célula =====
